@@ -10,7 +10,7 @@
 */
 
 // CODE HERE
-
+let sayHelloButton = document.querySelector(`#say-hello-button`);
 
 // PROBLEM 2
 /*
@@ -20,7 +20,10 @@
 */
 
 // CODE HERE
-
+function changeColor () {
+    sayHelloButton.classList.add("turnBlack");
+} 
+sayHelloButton.addEventListener(`mouseover`, changeColor);
 
 // PROBLEM 3
 /*
@@ -32,7 +35,11 @@
 */
 
 // CODE HERE
+function changeBack () {
+    sayHelloButton.classList.remove("turnBlack")
+}
 
+sayHelloButton.addEventListener(`mouseout`, changeBack);
 
 // PROBLEM 4
 /*
@@ -53,6 +60,7 @@ const sayHello = () => {
 // DO NOT EDIT FUNCTION
 
 // CODE HERE
+sayHelloButton.addEventListener(`click`, sayHello);
 
 
 // PROBLEM 5 
@@ -68,6 +76,10 @@ const sayHello = () => {
 
 const ohMy = () => {
     // YOUR CODE HERE
+    axios.get('http://localhost:3000/animals').then((response) => {
+        let {data} = response;
+        console.log(data);
+    }) 
 }
 
 document.getElementById('animals-button').addEventListener('click', ohMy)
@@ -88,7 +100,16 @@ document.getElementById('animals-button').addEventListener('click', ohMy)
 
 const repeatMyParam = () => {
     //YOUR CODE HERE
+    
+    axios.get(`http://localhost:3000/repeat/this is a test`).then((response) => {
+        
+        return response.data;
+    })
+    let repeat = document.getElementById(`repeat-text`);
+    repeat.textContent= response.data;
+    repeat.style.display = `block`;
 }
+document.getElementById('repeat-button').addEventListener('click', repeatMyParam);
 
 // PROBLEM 7
 /*
@@ -98,6 +119,7 @@ const repeatMyParam = () => {
 
     After setting the textContent, use the style method to change display to 'block'
 */
+
 
 // Code in the repeatMyParam function above
 
